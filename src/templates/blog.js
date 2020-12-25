@@ -4,7 +4,7 @@ import Layout from '../components/Layout/layout'
 
 export const query = graphql`
 query(
-  $slug: String!
+  $slug: String
 ){
   markdownRemark (
     fields: {
@@ -15,7 +15,6 @@ query(
   ){
     frontmatter{
       title
-      date
     }
     html
   }

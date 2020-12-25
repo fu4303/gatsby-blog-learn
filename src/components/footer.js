@@ -2,7 +2,7 @@ import React from 'react'
 import {useStaticQuery, graphql} from 'gatsby'
 
 const Footer = () => {
-    const data = useStaticQuery(graphql`
+     const data = useStaticQuery(graphql`
       query{
           site{
               siteMetadata{
