@@ -1,6 +1,6 @@
 ---
-title: "The Great gatsby Bootcamp"
-date: "2020-12-18"
+title: "Learning Gatsby"
+date: "2020-12-27"
 ---
 
 I am learning about Gatsby!!!
