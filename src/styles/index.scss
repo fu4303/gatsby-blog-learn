@@ -4,6 +4,14 @@ html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
+  font-size: 62.6%;
+
+  @media only screen and (min-width: 1400px){
+    font-size: 75%;
+  }
+  @media only screen and (min-width: 1800px){
+    font-size: 80%;
+  }
 }
 body {
   margin: 0;
