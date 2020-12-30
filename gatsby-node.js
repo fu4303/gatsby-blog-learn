@@ -1,33 +1,16 @@
 const path = require('path');
 
-exports.onCreateNode = ({ node, actions }) => {
-  const { createNode, createNodeField } = actions
-
-  if(node.internal.type === 'MarkdownRemark'){
-    const slug = path.basename(node.fileAbsolutePath, '.md' )
-    
-    createNodeField({
-      node,
-      name: 'slug',
-      value: slug
-    })
-
-  }
-}
 
 exports.createPages = async ({ graphql, actions }) => {
   const {createPage} = actions
 
-  const blogTempalte = path.resolve(`src/templates/blog.js`);
+  const blogTemplate = path.resolve(`src/templates/blog.js`);
   const res = await graphql(`
     query{
-      allMarkdownRemark{
+      allContentfulBlogPost{
         edges{
           node{
-            fields{
-              slug
-            }
-            
+            slug
           }
         }
       }
@@ -36,18 +19,15 @@ exports.createPages = async ({ graphql, actions }) => {
   `)
   
 
-  res.data.allMarkdownRemark.edges.forEach((edge) =>{
+  res.data.allContentfulBlogPost.edges.forEach((edge) =>{
     createPage({
-      component: blogTempalte,
-      path: `/blog/${edge.node.fields.slug}`,
+      component: blogTemplate,
+      path: `/blog/${edge.node.slug}`,
       context: {
-        slug: edge.node.fields.slug
+        slug: edge.node.slug
       }
     })
   })
 
   console.log(res.status, res)
-  //1. Get path to hljs-template
-  //2. Get markdown data
-  //3. Create new changes
 }
